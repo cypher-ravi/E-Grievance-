@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+.react-responsive-modal-modal{
+   width:90vh;
+   height: 90vh;
+}
+.quill{
+  height:50vh;
+}
+
+.react-responsive-modal-modal-overlay{
+  background: rgb(0 0 0 / 75%);
+}
