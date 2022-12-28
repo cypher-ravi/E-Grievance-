@@ -2,7 +2,12 @@ import React, { useState } from 'react'
 import {AiFillEdit, AiOutlineHome, AiOutlineUsergroupAdd} from 'react-icons/ai'
 import {SlUserFollowing} from 'react-icons/sl'
 import {IoMdNotificationsOutline} from 'react-icons/io'
+
+// import ReactSearchBox from "react-search-box";
+
 // import {CiSearch} from 'react-icons/ci'
+import {CgSearch} from 'react-icons/cg'
+
 import {RxAvatar} from 'react-icons/rx'
 import {MdOutlineLanguage,MdKeyboardArrowDown} from 'react-icons/md'
 
@@ -26,30 +31,38 @@ const Navbar = () => {
         </div>
         <div className='q_header_icons flex mr-5'>
             <div className='qheader_icon'>
-            <AiOutlineHome/>
+            <AiOutlineHome className="hover:bg-slate-100 rounded-2xl"/>
             </div>
             <div className='qheader_icon'>
-            <SlUserFollowing/>
+            <SlUserFollowing className="hover:bg-slate-100 rounded-2xl"/>
             </div>
             <div className='qheader_icon'>
-            <AiFillEdit/> 
+            <AiFillEdit className="hover:bg-slate-100 rounded-2xl"/> 
             </div>
             <div className='qheader_icon'>
-            <AiOutlineUsergroupAdd/>
+            <AiOutlineUsergroupAdd className="hover:bg-slate-100 rounded-2xl"/>
             </div>
             <div className='qheader_icon'>
-            <IoMdNotificationsOutline/>
-            </div> 
+            <IoMdNotificationsOutline className="hover:bg-slate-100 rounded-2xl"/>
+            </div>
+
         </div>
-        {/* <div className="q_header_input flex  p-5 rounded-lg border-black border-2">
-        <CiSearch/>
-        <input className="bg-transparent outline-none border-none " type="text" placeholder='enter the search' />
-        </div> */}
+             <div className="search_bar">
+              <input type="text" placeholder='enter search here' className="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" />
+              </div> 
+             <button className=' hover:bg-red-700 bg-red-900 p-2 rounded-3xl ml-1'><CgSearch className='text-white text-xl content-center'/></button>
+
+              
+
+
+        
+      
+
         <div className="remainimg flex items-center ml-6 ">
             <div className="avatar qheader_icon">
-            <RxAvatar/>
+            <RxAvatar className="hover:bg-slate-100 rounded-2xl"/>
             </div>
-            <MdOutlineLanguage className="text-3xl text-slate-400 hover:text-red-900"/>
+            <MdOutlineLanguage className="text-3xl text-slate-400 hover:text-red-900 hover:bg-slate-100 rounded-2xl"/>
             <button onClick={()=>setIsModalOpen(true)} className='ml-6 bg-red-900 cursor-pointer rounded-lg border-2 rounder-md w-40 text-white hover:bg-red-700'>Add Complaint</button>
             <Modal open={isModalOpen} closeIcon={Close} onClose={()=>setIsModalOpen(false)} closeOnEsc center closeOnOverlayClick={false}>
               <div className="modal_title flex items-center mb-1 border-b-2 border-slate-400">

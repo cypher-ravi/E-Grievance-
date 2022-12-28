@@ -32,12 +32,20 @@ const Post = () => {
                 <p className='mt-3 font-bold mb-3 cursor-pointer hover:underline'>Questions?</p>
                 <button onClick={()=>setIsModalOpen(true)} className='post_btnnanswer ml-auto bg-blue-700 text-white rounded-2xl py-2 px-6 hover:bg-red-900'>Answer</button>
                 <Modal open={isModalOpen} closeIcon={Close} onClose={()=>setIsModalOpen(false)} closeOnEsc center closeOnOverlayClick={false} >
-                  <div className="modal_question">
-                    <h1>This is the test Question?</h1>
-                    <p>asked by {""} <span>Username</span> {""} on {""}timestamp</p>
+                  <div className="modal_question ">
+                    <h1 className="font-extrabold text-red-600 text-3xl" >This is the test Question?</h1>
+                    <p>asked by {""} <span className='font-bold'>Username</span> {""} on {""}timestamp</p>
                   </div>
-                  <div className="modal_answer">
+                  <div className="modal_answer mt-2">
                     <ReactQuill placeholder="Enter your answer........"/>
+                  </div>  
+                  <div className="modal_button mt-12">
+                  <button className="cancel mr-24 bg-slate-300 mt-3 border-0 outline-0 text-white font-medium p-3 w-1/3 rounded-2xl   cursor-pointer hover:bg-red-700 " onClick={()=>setIsModalOpen(false)}>
+                  Cancel
+                </button>
+                <button type="subbmit" className="add border-0 outline-0 mt-3 bg-black text-white font-bold p-3 cursor-pointer w-1/2 rounded-2xl hover:bg-slate-400 hover:text-black" >
+                  Add Answer
+                </button>
                   </div>
                 </Modal>
             </div>
