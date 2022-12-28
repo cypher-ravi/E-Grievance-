@@ -10,19 +10,19 @@ import Modal from 'react-responsive-modal'
 import 'react-responsive-modal/styles.css';
 import {IoMdClose} from 'react-icons/io'
 import {BsPeopleFill} from 'react-icons/bs'
+import QuestionForm from './QuestionForm'
 
 const Navbar = () => {
 
   const [isModalOpen,setIsModalOpen] = useState(false);
-  const [inputUrl,setInputUrl] = useState("");
-  
+
 
   const Close = (<IoMdClose className='text-2xl font-bold'/>)
 
   return (
     <div className='h-16 qheader flex justify-center items-center p-1 bg-white w-full sticky z-auto top-0 shadow-sm shadow-slate-400' >
         <div className='header_logo h-8 mr-5'>
-            <h1 className='text-3xl font-extrabold text-red-900 items-center pb-4'>Quara</h1>
+            <h1 className='text-3xl font-extrabold text-red-900 items-center pb-4'>Quora</h1>
         </div>
         <div className='q_header_icons flex mr-5'>
             <div className='qheader_icon'>
@@ -50,7 +50,7 @@ const Navbar = () => {
             <RxAvatar/>
             </div>
             <MdOutlineLanguage className="text-3xl text-slate-400 hover:text-red-900"/>
-            <button onClick={()=>setIsModalOpen(true)} className='ml-6 bg-red-900 cursor-pointer rounded-lg border-2 rounder-md w-40 text-white hover:bg-red-700'>Add Complaint</button>
+            <button onClick={()=>setIsModalOpen(true)} className='ml-6 bg-red-900 cursor-pointer rounded-lg border-2 rounder-md w-40 h-12 text-white hover:bg-red-700'>Add Complaint</button>
             <Modal open={isModalOpen} closeIcon={Close} onClose={()=>setIsModalOpen(false)} closeOnEsc center closeOnOverlayClick={false}>
               <div className="modal_title flex items-center mb-1 border-b-2 border-slate-400">
                 <h1 className='text-slate-300 text-xl cursor-pointer font-medium mr-8 hover:text-red-600'>Add Question</h1>
@@ -64,23 +64,9 @@ const Navbar = () => {
                   <MdKeyboardArrowDown/>
                 </div>
               </div>
-              <div className="modal_field flex flex-col mt-8 flex-1">
-                <input className="text flex-1 ml-1 rounded-none outline-0 border-b-2 border-slate-500" type="text" placeholder='Start your Question with how and etc.' />
-                <div className='flex flex-col flex-1 pt-3'>
-                  <input value={inputUrl} onChange={(e) => setInputUrl(e.target.value)} className='flex-1 ml-1 rounded-none outline-1 outline-none outline-slate-600 p-2' type="text" placeholder='optional:include a link that give the context' />
-                 {
-                 inputUrl !== "" && <img className=' p-3 h-80 object-contain' src={inputUrl} alt="displayimage" />
-                 }
-                </div>
-              </div>
-              <div className="modal_buttons flex flex-col-reverse mt-3 items-center">
-                <button className="cancel bg-slate-300 mt-3 border-0 outline-0 text-white font-medium p-3 w-1/3 rounded-2xl   cursor-pointer hover:bg-red-700 " onClick={()=>setIsModalOpen(false)}>
-                  Cancel
-                </button>
-                <button type="subbmit" className="add border-0 outline-0 mt-3 bg-black text-white font-bold p-3 cursor-pointer w-1/2 rounded-2xl hover:bg-slate-400 hover:text-black" >
-                  Add Question
-                </button>
-              </div>
+
+              <QuestionForm setIsModalOpen={false}/>
+             
             </Modal>
         </div>
 

@@ -1,19 +1,29 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Qurabox from './Qurabox'
 import Post from './Post'
+import axios from'axios'
+import { useState } from 'react'
+
 
 const Feed = () => {
+  const [posts,setPosts] = useState([]);
+  useEffect(()=>{
+    axios
+    .get("http://127.0.0.1:8000/posts/list-post/")
+    .then((res)=>{
+      console.log(res.data['results']);
+      setPosts(res.data['results']);
+    })
+    .catch((e)=>{
+      console.log(e)
+    });
+  },[])
   return (
     <div className='feed basis-3/4 flex flex-col'>
        <Qurabox/>
-       <div className="">
-       <Post/>
-       <Post/>
-       <Post/>
-       <Post/>
-       <Post/>
-       <Post/>
-       <Post/>
+       <div>
+       
+       {posts.map((post,index)=>(<Post key={index} post={post}/>))}
        </div>
       
     </div>
