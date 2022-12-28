@@ -3,24 +3,21 @@ import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import Feed from './components/Feed';
 import Widget from './components/Widget';
-import Signup from './components/Signup';
-
-// import {
-//   BrowserRouter as Router,
-//   Routes,
-//   Route,
-//   Link
-// } from "react-router-dom";
-
+import React from 'react';
 
 
 function App() {
+  
+ 
+  
+// <-- Have to pass in [] here!
   return (
-    <>
-    <div className='qura bg-gray-200'>
+    <div className='qura bg-gray-100'>
       <Navbar/>
       <div className='qura_content flex justify-center mt-12'>
+      
       <Sidebar className="flex"/>
+      
       <Feed/>
       <Widget/>
       </div>

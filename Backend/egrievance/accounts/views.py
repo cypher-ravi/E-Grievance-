@@ -67,3 +67,8 @@ class LoginView(generics.GenericAPIView):
 def logoutView(request):
     logout(request)
     return Response({'logged_out':True})
+
+
+@api_view(['GET'])
+def get_user(request):
+    return Response({'user':request.user.id})
