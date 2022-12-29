@@ -16,6 +16,8 @@ import 'react-responsive-modal/styles.css';
 import {IoMdClose} from 'react-icons/io'
 import {BsPeopleFill} from 'react-icons/bs'
 
+import { Link } from 'react-router-dom';
+
 const Navbar = () => {
 
   const [isModalOpen,setIsModalOpen] = useState(false);
@@ -30,9 +32,14 @@ const Navbar = () => {
             <h1 className='text-3xl font-extrabold text-red-900 items-center pb-4'>Quara</h1>
         </div>
         <div className='q_header_icons flex mr-5'>
+
+            <Link to="/">
             <div className='qheader_icon'>
             <AiOutlineHome className="hover:bg-slate-100 rounded-2xl"/>
             </div>
+            </Link>
+
+
             <div className='qheader_icon'>
             <SlUserFollowing className="hover:bg-slate-100 rounded-2xl"/>
             </div>
@@ -59,9 +66,15 @@ const Navbar = () => {
       
 
         <div className="remainimg flex items-center ml-6 ">
+
+             <Link to='/signup'> 
             <div className="avatar qheader_icon">
             <RxAvatar className="hover:bg-slate-100 rounded-2xl"/>
+            
             </div>
+            </Link>
+
+
             <MdOutlineLanguage className="text-3xl text-slate-400 hover:text-red-900 hover:bg-slate-100 rounded-2xl"/>
             <button onClick={()=>setIsModalOpen(true)} className='ml-6 bg-red-900 cursor-pointer rounded-lg border-2 rounder-md w-40 text-white hover:bg-red-700'>Add Complaint</button>
             <Modal open={isModalOpen} closeIcon={Close} onClose={()=>setIsModalOpen(false)} closeOnEsc center closeOnOverlayClick={false}>

@@ -13,11 +13,15 @@ import 'react-quill/dist/quill.snow.css';
 import AnswerForm from './AnswerForm'
 import ReactHtmlParser from "html-react-parser"
 
+// import Like from './Like'
+
 
 const Post = ({post}) => {
 
   const [isModalOpen,setIsModalOpen] = useState(false);
   const Close = (<IoMdClose className='text-2xl font-bold'/>)
+
+  
 
 
   return (
@@ -45,15 +49,18 @@ const Post = ({post}) => {
         </div>
         
         <div className="post_footer flex items-center mt-3 p-2">
-            <div className="post_footer_actions flex justify-around border py-3 px-4 rounded-md mr-10 bg-gray-200 text-gray-500 text-3xl ">
-            <BiLike className='mr-10 text-3xl hover:text-red-900'/>
+            <div className="post_footer_actions flex justify-around border py-3 px-4 rounded-3xl mr-10 bg-gray-200 text-gray-500 text-3xl ">
+           <BiLike className='mr-10 text-3xl hover:text-red-900'/>
+           {/* <Like/> */}
+            
+            
             <BiDislike className='hover:text-red-900'/>
             </div>
-            <div className='flex justify-around border py-3 px-4 rounded-md mr-10 bg-gray-200 text-gray-500 text-3xl'>
+            <div className='flex justify-around border py-3 px-4 rounded-3xl mr-10 bg-gray-200 text-gray-500 text-3xl'>
             <RiShareForwardBoxFill className='mr-10 hover:text-red-900'/>
             <VscComment className='hover:text-red-900'/>
             </div>
-            <div className="post_footer-left flex  ml-auto  justify-around border py-3 px-4 rounded-md mr-10 bg-gray-200 text-gray-500 text-3xl ">
+            <div className="post_footer-left flex  ml-auto  justify-around border py-3 px-4 rounded-3xl mr-10 bg-gray-200 text-gray-500 text-3xl ">
             <VscLiveShare className='mr-10 hover:text-red-900'/>
             <RxDotsHorizontal className='hover:text-red-900'/>
             </div>
