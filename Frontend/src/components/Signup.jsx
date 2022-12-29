@@ -15,7 +15,7 @@ const Signup = () => {
       <div className="container m-auto h-[70vh] w-2/4 items-center bg-[#FFFFFF] rounded-md shadow-md">
 
         <div className='ml-[300px] pt-2'>
-          <h1 className='text-4xl font-extrabold text-red-800'>E-grievance-cell</h1>
+          <h1 className='text-4xl font-extrabold text-red-800'>EGrievance</h1>
         </div>
        
         <div className='lg:grid grid-cols-2 gap-5 items-center mt-5 p-5 '>

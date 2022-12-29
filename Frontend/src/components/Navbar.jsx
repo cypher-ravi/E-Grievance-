@@ -29,7 +29,7 @@ const Navbar = () => {
   return (
     <div className='h-16 qheader flex justify-center items-center p-1 bg-white w-full sticky z-auto top-0 shadow-sm shadow-slate-400' >
         <div className='header_logo h-8 mr-5'>
-            <h1 className='text-3xl font-extrabold text-red-900 items-center pb-4'>Quara</h1>
+            <h1 className='text-3xl font-extrabold text-red-900 items-center pb-4'>EGrievance</h1>
         </div>
         <div className='q_header_icons flex mr-5'>
 
