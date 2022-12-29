@@ -1,10 +1,16 @@
-import React, { Component } from "react";
+import React, { Component,useContext } from "react";
 import axios from 'axios';
 
+import AuthContext from '../context/AuthContext'
+
+
+
 export default class QuestionForm extends Component {
+    // static contextType = AuthContext;
     constructor(props) {
         
         super(props);
+        
         this.state = { inputUrl: "",question:""};
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -16,13 +22,17 @@ export default class QuestionForm extends Component {
       }
     
       handleSubmit = async (event) => {
-        // event.preventDefault();
+        event.preventDefault();
+        let csrfToken = "{% csrf_token %}";
+        console.log(this.context.authTokens)
         if(this.state.question !== ""){
+           
             const config = {
-                headers : {"Content-Type": "application/json"},
+                headers : {"Access-Control-Allow-Origin" : "*","Content-Type": "application/json","Authorization":"Bearer " + String(this.context.authTokens.access)},
             }
             const body = {
                 content:this.state.question,
+                user:this.context.user.username,
             }
             await axios.post("http://127.0.0.1:8000/posts/create-post/",body,config).then((res)=>{
                 console.log(res.data)
@@ -88,3 +98,6 @@ export default class QuestionForm extends Component {
         );
     }
 }
+
+
+QuestionForm.contextType = AuthContext;

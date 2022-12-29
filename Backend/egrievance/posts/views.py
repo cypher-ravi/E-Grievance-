@@ -24,14 +24,14 @@ class CreatePostView(generics.CreateAPIView):
     """
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    # permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
 
     def post(self, request, *args, **kwargs):
-        # user = User.objects.filter(username=self.request.user).first()
+        user = User.objects.filter(username=request.data['user']).first()
         # if user:
             # space = Space.objects.filter(id=request.data['space']).first()
             # author = Profile.objects.filter(id=request.data['author']).first()
-        post = Post.objects.create(content=request.data['content'])
+        post = Post.objects.create(content=request.data['content'], author=user)
         return Response({"message":"Question Added Successfully"},status=status.HTTP_201_CREATED)
        
         # else:
@@ -43,9 +43,10 @@ class CreateAnswerView(generics.CreateAPIView):
     """
     queryset = Answer.objects.all()
     serializer_class = AnswerSerializer
-    # permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
 
     def post(self, request, *args, **kwargs):
+        user  = request.user
         question = Post.objects.filter(id=request.data['question']).first()
         if question:
             # space = Space.objects.filter(id=request.data['space']).first()
@@ -62,7 +63,7 @@ class ListPostView(generics.ListAPIView):
     """
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    # permission_classes = (IsAuthenticated,)
+    # permission_classes = [IsAuthenticated,]
 
 
 
