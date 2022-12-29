@@ -15,7 +15,7 @@ const Signup = () => {
       <div className="container m-auto h-[70vh] w-2/4 items-center bg-[#FFFFFF] rounded-md shadow-md">
 
         <div className='ml-[300px] pt-2'>
-          <h1 className='text-4xl font-extrabold text-red-800'>EGrievance</h1>
+          <h1 className='text-4xl ml-4 font-extrabold text-red-800'>EGrievance</h1>
         </div>
        
         <div className='lg:grid grid-cols-2 gap-5 items-center mt-5 p-5 '>
@@ -31,7 +31,7 @@ const Signup = () => {
             </Modal>
             <div> 
 
-              <p className='mb-16 text-slate-400'>By continuing you indicate that you agree to Quora’s <spam className="text-blue-500 hover:underline cursor-pointer">Terms of Service</spam> and <spam className="text-blue-500 hover:underline cursor-pointer">Privacy Policy</spam>.</p>
+              <p className='mb-16 text-slate-400'>By continuing you indicate that you agree to EGrievance's <spam className="text-blue-500 hover:underline cursor-pointer">Terms of Service</spam> and <spam className="text-blue-500 hover:underline cursor-pointer">Privacy Policy</spam>.</p>
 
             <button type="button" className="w-full text-white bg-[#4285F4] hover:bg-[#4285F4]/90  font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mb-8">
                 <svg className="mr-2 ml-14 w-4 h-4" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="google" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512"><path fill="currentColor" d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"></path></svg>
