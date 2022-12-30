@@ -23,18 +23,25 @@ export default class QuestionForm extends Component {
     
       handleSubmit = async (event) => {
         event.preventDefault();
-        let csrfToken = "{% csrf_token %}";
+        axios.interceptors.request.use(
+            config => {
+              config.headers.authorization = 'Bearer ' + this.context.authTokens.access;
+              return config;
+            },
+            error => {
+              return Promise.reject(error);
+            }
+          )
         console.log(this.context.authTokens)
         if(this.state.question !== ""){
            
-            const config = {
-                headers : {"Access-Control-Allow-Origin" : "*","Content-Type": "application/json","Authorization":"Bearer " + String(this.context.authTokens.access)},
-            }
+            
+            
             const body = {
                 content:this.state.question,
                 user:this.context.user.username,
             }
-            await axios.post("http://127.0.0.1:8000/posts/create-post/",body,config).then((res)=>{
+            await axios.post("http://127.0.0.1:8000/posts/create-post/",body).then((res)=>{
                 console.log(res.data)
                 // alert("Question Added Successfully!")
                 window.location.href = '/';

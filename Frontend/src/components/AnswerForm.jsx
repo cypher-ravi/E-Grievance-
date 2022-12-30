@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import ReactQuill from 'react-quill';
+import AuthContext from '../context/AuthContext'
 
 export default class AnswerForm extends Component {
     constructor(props) {
@@ -19,16 +20,25 @@ export default class AnswerForm extends Component {
       }
     
       handleSubmit = async (event) => {
-        // event.preventDefault();
-        if(this.state.answer !== ""){
-            const config = {
-                headers : {"Content-Type": "application/json"},
+        event.preventDefault();
+        axios.interceptors.request.use(
+            config => {
+              config.headers.authorization = 'Bearer ' + this.context.authTokens.access;
+              return config;
+            },
+            error => {
+              return Promise.reject(error);
             }
+          )
+        if(this.state.answer !== ""){
+         
+            
             const body = {
                 question:this.props.post['id'],
                 content:this.state.answer,
+                user:this.context.user.username,
             }
-            await axios.post("http://127.0.0.1:8000/posts/create-answer/",body,config).then((res)=>{
+            await axios.post("http://127.0.0.1:8000/posts/create-answer/",body).then((res)=>{
                 console.log(res.data)
                 // alert("Answer Added Successfully!")
                 window.location.href='/';
@@ -80,3 +90,5 @@ export default class AnswerForm extends Component {
     )
   }
 }
+
+AnswerForm.contextType = AuthContext;

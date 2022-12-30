@@ -38,6 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    # ... include the providers you want to enable:
+    'allauth.socialaccount.providers.google',
+    'dj_rest_auth',
     'profiles',
     'posts',
     'rest_framework',
@@ -46,10 +52,13 @@ INSTALLED_APPS = [
     'drf_yasg', 
     'corsheaders',
     'rest_framework_simplejwt.token_blacklist',
+
 ]
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
     )
 
 }
@@ -151,10 +160,7 @@ REST_FRAMEWORK = {
 # ]
 # }
 
-CORS_ORIGIN_WHITELIST = (
-    'http://127.0.0.1:3000',
-    'http://127.0.0.1:3000',
-   )
+
 CORS_ORIGIN_ALLOW_ALL = True   
 
 

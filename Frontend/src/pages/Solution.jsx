@@ -1,17 +1,17 @@
 import React from 'react'
 import Sidebar from '../components/Sidebar';
-import QuestionFeed from '../components/QuestionFeed';
+import AnswerFeed from '../components/AnswerFeed';
 import Widget from '../components/Widget';
 
-const HomePage = () => {
+const Solution = () => {
   return (
       <div className='qura_content flex justify-center mt-12'>
       <Sidebar className="flex"/>
-      <QuestionFeed/>
+      <AnswerFeed/>
       <Widget/>
       </div>
    
   )
 }
 
-export default HomePage
+export default Solution

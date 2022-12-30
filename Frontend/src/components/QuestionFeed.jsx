@@ -6,17 +6,27 @@ import { useState,useContext } from 'react'
 import AuthContext from '../context/AuthContext'
 
 
+const apiURL = 'http://127.0.0.1:8000';
 
-const Feed = () => {
-  let {authTokens} = useContext(AuthContext)
+const QuestionFeed = () => {
+  
   const [posts,setPosts] = useState([]);
+  let {authTokens} = useContext(AuthContext)
+
+  axios.interceptors.request.use(
+    config => {
+      config.headers.authorization = 'Bearer ' + authTokens.access;
+      return config;
+    },
+    error => {
+      return Promise.reject(error);
+    }
+  )
   useEffect(()=>{
     // let token = String(authTokens.access);
-    const config = {
-      headers : {'Content-Type':'application/json'},
-    }
+    
     axios
-    .get("http://127.0.0.1:8000/posts/list-post/",config)
+    .get(`${apiURL}/posts/list-post/`)
     .then((res)=>{
       console.log(res.data['results']);
       setPosts(res.data['results']);
@@ -25,6 +35,7 @@ const Feed = () => {
       console.log(e)
     });
   },[])
+  
   return (
     <div className='feed basis-3/4 flex flex-col'>
        <Qurabox/>
@@ -37,4 +48,4 @@ const Feed = () => {
   )
 }
 
-export default Feed
+export default QuestionFeed

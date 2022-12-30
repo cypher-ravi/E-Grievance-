@@ -14,6 +14,10 @@ from rest_framework.views import APIView
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 
+from dj_rest_auth.registration.views import SocialLoginView
+from allauth.socialaccount.providers.google.views import GoogleOAuth2Adapter
+from allauth.socialaccount.providers.oauth2.client import OAuth2Client
+
 
 from django.contrib.auth.models import User
 from .serializers import *
@@ -50,13 +54,13 @@ class RegisterUserView(generics.GenericAPIView):
         user = User.objects.filter(username=request.data['username']).first()
         if user is None:
             if request.data['username']:
-                if request.data['password'] != request.data['password_2']:
-                    return Response({"password": "Password fields didn't match."})
+                # if request.data['password'] != request.data['password_2']:
+                #     return Response({"password": "Password fields didn't match."})
                 user = User.objects.create(username=request.data['username'],email=request.data['email'])
                 user.set_password(request.data['password'])
                 user.save()
-                return Response({"username":user.username})
-            return Response({"username":"enter username"})
+                return Response({"user_created":True,},status=status.HTTP_201_CREATED)
+            return Response({"required":"username"})
         else:
             return Response({"user with this name already exists":True})
 
@@ -88,3 +92,12 @@ def logoutView(request):
 @api_view(['GET'])
 def get_user(request):
     return Response({'user':request.user.id})
+
+
+
+
+
+
+class GoolgeAuth(SocialLoginView):
+    adapter_class = GoogleOAuth2Adapter
+    client_class = OAuth2Client

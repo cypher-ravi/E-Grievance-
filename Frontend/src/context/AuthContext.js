@@ -37,6 +37,30 @@ export const AuthProvider = ({children}) => {
         }
        
     }
+
+
+    let registerUser = async(e) =>{
+        // e.preventDefault()
+        let response = await fetch('http://127.0.0.1:8000/auth/register/',{
+            method : 'POST',
+            headers: { 
+                'Content-Type':'application/json',
+            },
+            body:JSON.stringify({'username':e.target.username.value,'email':e.target.email.value, 'password':e.target.password.value})
+        })
+       
+        if(response.status === 201){
+            // setauthTokens(data)
+            // setUser(jwt_decode(data.access))
+            // localStorage.setItem('authTokens',JSON.stringify(data))
+            navigate('/login');
+        }
+        else{
+            alert('something went wrong')
+        }
+       
+    }
+
     let logoutUser = () => {
         setauthTokens(null);
         setUser(null);
@@ -46,6 +70,7 @@ export const AuthProvider = ({children}) => {
 
     let updateToken = async () => {
         console.log("update token called")
+        // console.log(authTokens.access)
         let response = await fetch('http://127.0.0.1:8000/auth/token/refresh/',{
             method : 'POST',
             headers: { 
@@ -71,6 +96,7 @@ export const AuthProvider = ({children}) => {
         user:user,
         loginUser:loginUser,
         logoutUser:logoutUser,
+        registerUser:registerUser,
         authTokens:authTokens,
     }
 

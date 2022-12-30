@@ -10,4 +10,5 @@ urlpatterns = [
     path('create-answer/',CreateAnswerView.as_view(),name='create-answer'),
     path('list-post/',ListPostView.as_view(),name='list-post'),
     path('list-spaces/',ListSpacesView.as_view(),name='list-spacces'),
+    path('list-all-answers/<int:question>/',ListAnswersView.as_view(),name='list-all-answers'),
 ]

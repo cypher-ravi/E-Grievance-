@@ -1,17 +1,17 @@
 import React,{ useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import {FaUserCircle} from 'react-icons/fa'
 import {BiLike,BiDislike} from 'react-icons/bi'
 import {RiShareForwardBoxFill} from 'react-icons/ri'
-import {VscComment,VscLiveShare} from 'react-icons/vsc'
-import {RxDotsHorizontal} from 'react-icons/rx'
-import {RxAvatar} from 'react-icons/rx'
+import {VscComment} from 'react-icons/vsc'
+
 import Modal from 'react-responsive-modal'
 import 'react-responsive-modal/styles.css';
 import {IoMdClose} from 'react-icons/io'
 
 import 'react-quill/dist/quill.snow.css';
 import AnswerForm from './AnswerForm'
-import ReactHtmlParser from "html-react-parser"
+import SingleAccordion from './SingleAccordion'
 
 // import Like from './Like'
 
@@ -21,14 +21,18 @@ const Post = ({post}) => {
   const [isModalOpen,setIsModalOpen] = useState(false);
   const Close = (<IoMdClose className='text-2xl font-bold'/>)
 
-  
+  let navigate = useNavigate()
+  let navigateToSolution = () => {
+    navigate('/solutions',{state: {question : post['id']}})
 
+  }
+  console.log('here is post data ' + post.author.user.username)
 
   return (
     <div style={{width: '100%',}} className='post flex flex-col p-3 bg-white  mt-3 rounded-md'>
         <div className="post_info flex items-center">
         <FaUserCircle className='text-4xl'/>
-        <h1 className='ml-3 cursor-pointer text-sm font-bold hover:underline'>Username</h1>
+        <h1 className='ml-3 cursor-pointer text-sm font-bold hover:underline'>{post.author.user.username}</h1>
         <small className='ml-3'>Time Stamp</small>
         </div>
         <div className='post_body flex flex-col'>
@@ -60,19 +64,19 @@ const Post = ({post}) => {
             <RiShareForwardBoxFill className='mr-10 hover:text-red-900'/>
             <VscComment className='hover:text-red-900'/>
             </div>
-            <div className="post_footer-left flex  ml-auto  justify-around border py-3 px-4 rounded-3xl mr-10 bg-gray-200 text-gray-500 text-3xl ">
-            <VscLiveShare className='mr-10 hover:text-red-900'/>
-            <RxDotsHorizontal className='hover:text-red-900'/>
+            <div className="post_footer-left flex  ml-auto  justify-around text-gray-500 text-3xl ">
+            {/* <VscLiveShare className='mr-10 hover:text-red-900'/>
+            <RxDotsHorizontal className='hover:text-red-900'/> */}
+            <button type="button" onClick={navigateToSolution} className="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+              All Answers
+              <span className="inline-flex justify-center items-center ml-2 w-4 h-4 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full">
+              {post?.answers.length }
+              </span>
+              <svg aria-hidden="true" class="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+            </button>
             </div>
         </div>
-        <p style={{
-          color:"rgba(0,0,0,0.5)",
-          fontSize:"12px",
-          fontWeight:"bold",
-          margin:"10px 0",
-        }}> {post?.answers.length } Answers</p>
-
-
+    
 
         <div style={{
           margin:"5px 0px 0px 0px",
@@ -82,56 +86,9 @@ const Post = ({post}) => {
         className="post__answer"
         >
          
-
-
-
-
-            {post?.answers?.map((_a)=>(
-               <div key={_a.id}
-               style={{
-                 // display:"flex",
-                 flexdirection:"row",
-                 width:"100%",
-                 padding:"10px 5px",
-                 borderTop:"1px solid lightgrey",
-               }}
-               className="post-answer-container"
-               >
-            
-                <div
-            style={{
-              display:"flex",
-              alignItems:"center",
-              marginBottom:"10px",
-              fontSize:"15px",
-              fontWeight:600,
-              color:"#888",
-              marginTop:"10px",
-            }}
-            className="post-answered"
-            >
-              <RxAvatar className='text-5xl'/>
-              <div style={{
-                margin:"0px 10px",
-              }}
-            className="post-info"
-              >
-                <p>Username</p>
-                <span>TimeStamp</span>
-              </div>
-            </div>
-            <div className="post-answer text-2xl p-2 ml-2">{ReactHtmlParser(_a?.content)}</div>
-           
-             
-          </div>
-            ))}
-          
-
-
-
-
-
-
+            {post?.answers?.map((_a,index)=>(
+              <SingleAccordion key={_a.id} id={index + 1} content={_a?.content}/>
+              ))}
         </div>
 
 

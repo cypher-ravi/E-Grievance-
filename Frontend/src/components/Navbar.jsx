@@ -20,6 +20,7 @@ import { BsPeopleFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import QuestionForm from "./QuestionForm";
+import UserDropDown from "./UserDropDown";
 
 const Navbar = () => {
   let {user,logoutUser} = useContext(AuthContext)
@@ -67,10 +68,9 @@ const Navbar = () => {
       </button>
 
       <div className="remainimg flex items-center ml-6 ">
-      {user ? (
-              <button className="m-5" onClick={logoutUser}>Logout</button>
-            ):(
-              <Link to="/login">
+      {user ? (<UserDropDown/>
+      
+      ):(<Link to="/login">
               <div className="avatar qheader_icon">
                 <RxAvatar className="hover:bg-slate-100 rounded-2xl" /> 
               </div>
