@@ -97,3 +97,20 @@ class ListAnswersView(generics.GenericAPIView):
         answers = Answer.objects.filter(question=question)
         serialized_answers = AnswerSerializer(answers,many=True)
         return Response({'results':serialized_answers.data})
+
+
+class ListAnswersViewViaSpace(generics.GenericAPIView):
+    """
+    list all anaswer using space aka categories
+    """
+    queryset = Answer.objects.all()
+    serializer_class = AnswerSerializer
+    permission_classes = [IsAuthenticated,]
+    authentication_classes = [SessionAuthentication, BasicAuthentication,TokenAuthentication,JWTAuthentication]
+
+
+    def get(self,request,*args,**kwargs):
+        question = Post.objects.filter(space__id=self.kwargs['space']).first()
+        answers = Answer.objects.filter(question=question)
+        serialized_answers = AnswerSerializer(answers,many=True)
+        return Response({'results':serialized_answers.data})

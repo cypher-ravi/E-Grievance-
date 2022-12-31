@@ -5,7 +5,7 @@ import Widget from '../components/Widget';
 
 const HomePage = () => {
   return (
-      <div className='qura_content flex justify-center mt-12'>
+      <div className='qura_content bg-gray-100 flex justify-center'>
       <Sidebar className="flex"/>
       <QuestionFeed/>
       <Widget/>

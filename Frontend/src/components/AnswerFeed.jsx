@@ -13,7 +13,7 @@ const AnswerFeed = () => {
   const [posts,setPosts] = useState([]);
   let {authTokens} = useContext(AuthContext)
   const {state} = useLocation();
-  const { question } = state; 
+  const {value,navigateToSpace} = state; 
 
  
   axios.interceptors.request.use(
@@ -27,17 +27,31 @@ const AnswerFeed = () => {
   )
   useEffect(()=>{
     // let token = String(authTokens.access);
+    console.log(navigateToSpace)
+    if(navigateToSpace){
+      axios
+      .get(`${apiURL}/posts/list-all-answers-via-space/${value}/`)
+      .then((res)=>{
+        console.log(res.data['results']);
+        setPosts(res.data['results']);
+      })
+      .catch((e)=>{
+        console.log(e)
+      });
+    }
+    else{
+      axios
+      .get(`${apiURL}/posts/list-all-answers/${value}/`)
+      .then((res)=>{
+        console.log(res.data['results']);
+        setPosts(res.data['results']);
+      })
+      .catch((e)=>{
+        console.log(e)
+      });
+    }
     
-    axios
-    .get(`${apiURL}/posts/list-all-answers/${question}/`)
-    .then((res)=>{
-      console.log(res.data['results']);
-      setPosts(res.data['results']);
-    })
-    .catch((e)=>{
-      console.log(e)
-    });
-  },[])
+  },[navigateToSpace,value])
   
   return (
     <div className='feed basis-3/4 flex flex-col'>

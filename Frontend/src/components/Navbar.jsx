@@ -32,7 +32,7 @@ const Navbar = () => {
   return (
     <div className="h-16 qheader flex justify-center items-center p-1 bg-white w-full sticky z-auto top-0 shadow-sm shadow-slate-400">
       <div className="header_logo h-8 mr-5">
-        <h1 className="text-3xl font-extrabold text-red-900 items-center pb-4">
+        <h1 className="text-3xl font-extrabold text-blue-900 items-center pb-4">
           EGrievance
         </h1>
       </div>
@@ -63,7 +63,7 @@ const Navbar = () => {
           className="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
         />
       </div>
-      <button className=" hover:bg-red-700 bg-red-900 p-2 rounded-3xl ml-1">
+      <button className=" hover:bg-red-700 bg-blue-900 p-2 rounded-3xl ml-1">
         <CgSearch className="text-white text-xl content-center" />
       </button>
 
@@ -81,7 +81,7 @@ const Navbar = () => {
         <MdOutlineLanguage className="text-3xl text-slate-400 hover:text-red-900 hover:bg-slate-100 rounded-2xl" />
         <button
           onClick={() => setIsModalOpen(true)}
-          className="ml-6 bg-red-900 cursor-pointer rounded-lg border-2 rounder-md w-40 text-white hover:bg-red-700"
+          className="ml-6 bg-blue-900 cursor-pointer h-12 rounded-lg border-2 rounder-md w-40 text-white hover:bg-red-700"
         >
           Add Complaint
         </button>

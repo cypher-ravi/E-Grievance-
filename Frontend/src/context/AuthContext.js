@@ -16,6 +16,7 @@ export const AuthProvider = ({children}) => {
 
     const navigate = useNavigate()
 
+  
     let loginUser = async(e) =>{
         e.preventDefault()
         let response = await fetch('http://127.0.0.1:8000/auth/token/',{
@@ -98,6 +99,7 @@ export const AuthProvider = ({children}) => {
         logoutUser:logoutUser,
         registerUser:registerUser,
         authTokens:authTokens,
+      
     }
 
 

@@ -3,9 +3,12 @@ import {AiOutlinePlusCircle} from 'react-icons/ai'
 
 
 import axios from 'axios'
+import SpaceOption from './SpaceOption'
 
 const Sidebaroptions = () => {
     const [spaces,setSpaces] = useState([]);
+   
+
     useEffect(()=>{
       axios
       .get("http://127.0.0.1:8000/posts/list-spaces/")
@@ -21,10 +24,12 @@ const Sidebaroptions = () => {
     <div className='sidebaroptions flex flex-col'>
         <div>
         {spaces.map(({id,name,category})=>(
-         <div key={id} className="sidebaroption">
-         <img className='image' src="" alt="" />
-         <p className='paragraph'>{name}</p>
-          </div>
+
+<SpaceOption key={id} id={id} name={name}/>
+        //  <div onKeyDown={navigateToSolutions(id)} key={id} className="sidebaroption">
+        //  <img className='image' src="" alt="" />
+        //  <p className='paragraph'>{name}</p>
+        //   </div>
         ))}
        
         </div>

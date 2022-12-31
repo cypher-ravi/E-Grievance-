@@ -22,13 +22,14 @@ function App() {
       <GoogleOAuthProvider clientId="248445241744-jm3h0e65l88uoige865o8ft94q44tiqp.apps.googleusercontent.com">
         <AuthProvider>
 
-            <div className='qura bg-gray-100'>
+            <div className='qura bg-gray-200'>
               <Navbar/>
             </div>
            <Routes>
               <Route exact path='/' element={<PrivateRoute/>} >
                 <Route exact path="/" element={<HomePage/>} />
                 <Route exact path="/solutions" element={<Solution/>} />
+                <Route exact path="/space-solutions" element={<Solution/>} />
               </Route>
               <Route exact path="/login" element={<Login/>} />
           </Routes>

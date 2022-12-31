@@ -22,8 +22,8 @@ const Post = ({post}) => {
   const Close = (<IoMdClose className='text-2xl font-bold'/>)
 
   let navigate = useNavigate()
-  let navigateToSolution = () => {
-    navigate('/solutions',{state: {question : post['id']}})
+  const navigateToSolution = () => {
+    navigate('/solutions',{state: {value : post['id'],navigateToSpace:false}})
 
   }
   console.log('here is post data ' + post.author.user.username)
@@ -38,7 +38,7 @@ const Post = ({post}) => {
         <div className='post_body flex flex-col'>
             <div className="post_question  flex">
                 <p className='mt-3 font-bold mb-3 text-2xl cursor-pointer hover:underline'>{post['content']}</p>
-                <button onClick={()=>setIsModalOpen(true)} className='post_btnnanswer ml-auto bg-blue-700 text-white rounded-2x1 py-2 mb-2 px-6 hover:bg-red-900'>Answer</button>
+                <button onClick={()=>setIsModalOpen(true)} className='post_btn-answer ml-auto bg-blue-900 text-white rounded-2x1 py-2 mb-2 round px-6 hover:bg-blue-700'>Answer</button>
                 <Modal open={isModalOpen} closeIcon={Close} onClose={()=>setIsModalOpen(false)} closeOnEsc center closeOnOverlayClick={false} >
                   
 
@@ -67,7 +67,7 @@ const Post = ({post}) => {
             <div className="post_footer-left flex  ml-auto  justify-around text-gray-500 text-3xl ">
             {/* <VscLiveShare className='mr-10 hover:text-red-900'/>
             <RxDotsHorizontal className='hover:text-red-900'/> */}
-            <button type="button" onClick={navigateToSolution} className="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            <button type="button" onClick={navigateToSolution} className="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-900 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
               All Answers
               <span className="inline-flex justify-center items-center ml-2 w-4 h-4 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full">
               {post?.answers.length }
