@@ -26,10 +26,7 @@ const Sidebaroptions = () => {
         {spaces.map(({id,name,category})=>(
 
 <SpaceOption key={id} id={id} name={name}/>
-        //  <div onKeyDown={navigateToSolutions(id)} key={id} className="sidebaroption">
-        //  <img className='image' src="" alt="" />
-        //  <p className='paragraph'>{name}</p>
-        //   </div>
+       
         ))}
        
         </div>

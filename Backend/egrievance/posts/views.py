@@ -16,6 +16,7 @@ from rest_framework_simplejwt.authentication import JWTAuthentication,JWTTokenUs
 from django.contrib.auth.models import User
 from .serializers import *
 from rest_framework import filters
+from .utils import get_recommended_answers
 
 
 from .models import Post,Space,Answer,Like,Comment
@@ -34,9 +35,12 @@ class CreatePostView(generics.CreateAPIView):
         user = User.objects.filter(username=request.data['user']).first()
         profile = Profile.objects.filter(user=user).first()
         # if user:
-            # space = Space.objects.filter(id=request.data['space']).first()
+        space = Space.objects.filter(id=request.data['space']).first()
             # author = Profile.objects.filter(id=request.data['author']).first()
-        post = Post.objects.create(content=request.data['content'], author=profile)
+        post = Post.objects.create(content=request.data['content'], author=profile,space=space)
+
+        answer = get_recommended_answers(post.content,space.prompts)
+        Answer.objects.create(question=post,content=answer,author=profile)
         return Response({"message":"Question Added Successfully"},status=status.HTTP_201_CREATED)
        
         # else:

@@ -2,6 +2,7 @@ import React, { Component,useContext } from "react";
 import axios from 'axios';
 
 import AuthContext from '../context/AuthContext'
+import DropDownSpaceOptions from './DropDownSpaceOptions'
 
 
 
@@ -10,15 +11,47 @@ export default class QuestionForm extends Component {
     constructor(props) {
         
         super(props);
-        
-        this.state = { inputUrl: "",question:""};
+        this.state = {inputUrl: "",question:"",spaces:[],questionSpace:1};
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSpaceChange = this.handleSpaceChange.bind(this);
        
     }
     handleChange(event) {
         console.log(this.state.question)
         this.setState({question: event.target.value});
+      }
+      handleSpaceChange(event) {
+        let question_space = event.target.value;
+        console.log("question space" + event.target.value)
+        // this.state.questionSpace = question_space;
+        this.setState({questionSpace: question_space});
+      }
+
+      componentDidMount() {
+        // Runs after the first render() lifecycle
+        axios.interceptors.request.use(
+            config => {
+              config.headers.authorization = 'Bearer ' + this.context.authTokens.access;
+              return config;
+            },
+            error => {
+              return Promise.reject(error);
+            }
+          )
+        console.log(this.context.authTokens)
+        
+        axios
+        .get("http://127.0.0.1:8000/posts/list-spaces/")
+        .then((res)=>{
+            console.log(res.data['results']);
+            this.setState({spaces: res.data['results']});
+        //   this.state.(res.data['results']);
+        })
+        .catch((e)=>{
+            console.log(e)
+        });
+            
       }
     
       handleSubmit = async (event) => {
@@ -34,12 +67,10 @@ export default class QuestionForm extends Component {
           )
         console.log(this.context.authTokens)
         if(this.state.question !== ""){
-           
-            
-            
             const body = {
                 content:this.state.question,
                 user:this.context.user.username,
+                space:this.state.questionSpace
             }
             await axios.post("http://127.0.0.1:8000/posts/create-post/",body).then((res)=>{
                 console.log(res.data)
@@ -58,6 +89,30 @@ export default class QuestionForm extends Component {
     render() {
         return (
             <>
+                <div>
+                {/* <DropDownSpaceOptions spaces={this.state.spaces}/> */}
+                <div >
+                        <label htmlFor="space">Choose an Space:</label>
+
+                <select className="ml-2" onChange={this.handleSpaceChange} name="question_space" id="space">
+                {this.state.spaces.map(({id,name,category})=>(
+
+                    <option key={id}   value={id}>{name}</option>
+                    
+                    ))}
+                    {/* <SpaceOption key={id} id={id} name={name}/> */}
+                
+                </select>
+                        
+                    
+                    </div>
+
+
+
+
+
+
+                </div>
                 <form onSubmit={this.handleSubmit}>
                 <div className="modal_field flex flex-col mt-8 flex-1">
 

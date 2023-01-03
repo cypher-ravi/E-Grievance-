@@ -12,8 +12,10 @@ class Space(models.Model):
         ('Government','Government'),
         ('Private','Private'),
     )
+    image = models.ImageField(upload_to='space', blank=True,null=True)
     name = models.CharField(max_length=50,unique=True)
     category = models.CharField(choices=CATEGORY_CHOICES, max_length=50)
+    prompts = models.TextField(blank=True,null=True)
     
 
     class Meta:

@@ -33,8 +33,12 @@ export default function SearchForm() {
           .catch((e)=>{
             console.log(e)
           });
-
-        navigate('/search-feed',{state: {posts :posts}})
+        if(e.target.value === ''){
+            navigate('/');
+        }
+        else{
+            navigate('/search-feed',{state: {posts :posts}})
+        }
 
     }
 
