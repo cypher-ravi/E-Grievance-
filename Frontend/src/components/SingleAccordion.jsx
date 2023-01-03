@@ -13,7 +13,7 @@ export default function SingleAccordion(props) {
     </Accordion.Title>
     <Accordion.Content>
       <p className="mb-2 text-gray-500 dark:text-gray-400">
-      {ReactHtmlParser(props.content)}
+      {ReactHtmlParser(props.content)}...
       </p>
    
       

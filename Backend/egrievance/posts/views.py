@@ -36,10 +36,10 @@ class CreatePostView(generics.CreateAPIView):
         profile = Profile.objects.filter(user=user).first()
         # if user:
         space = Space.objects.filter(id=request.data['space']).first()
+        answer = get_recommended_answers(request.data['content'],space.prompts)
             # author = Profile.objects.filter(id=request.data['author']).first()
         post = Post.objects.create(content=request.data['content'], author=profile,space=space)
 
-        answer = get_recommended_answers(post.content,space.prompts)
         Answer.objects.create(question=post,content=answer,author=profile)
         return Response({"message":"Question Added Successfully"},status=status.HTTP_201_CREATED)
        

@@ -63,112 +63,7 @@ const Navbar = () => {
       <div className="remainimg flex items-center">
       {user ? (
       // <UserDropDown/>
-      <button onClick={logoutUser}  className="block py-2 px-5 text-sm text-
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</button>
+      <button onClick={logoutUser}  className="block py-2 px-5 text-sm text-hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</button>
       
       ):(<Link to="/login">
               <div className="avatar qheader_icon">
@@ -183,7 +78,7 @@ const Navbar = () => {
           onClick={() => setIsModalOpen(true)}
           className="ml-6 bg-blue-900 cursor-pointer h-12 rounded-full border-2 rounder-md w-40 text-white hover:bg-red-700"
         >
-          Add Complaint
+         Ask Question?
         </button>
         <Modal
           open={isModalOpen}

@@ -11,7 +11,7 @@ export default class QuestionForm extends Component {
     constructor(props) {
         
         super(props);
-        this.state = {inputUrl: "",question:"",spaces:[],questionSpace:1};
+        this.state = {inputUrl: "",question:"",spaces:[],questionSpace:""};
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleSpaceChange = this.handleSpaceChange.bind(this);

@@ -32,7 +32,7 @@ const Sidebaroptions = () => {
         </div>
        
 
-        <div className="sidebaroption ml-4">
+        <div className="sidebaroption">
         <AiOutlinePlusCircle/>
             <p className="text">Discover Spaces</p>
         </div>
