@@ -17,19 +17,19 @@ prerequisite : Python,node (to use npm)
 
 # Step 1 : Download and navigate to backend folder through terminal
 
-run <pip install -r requiremnents.txt> it will install all the backend requirements.
+run  ```pip install -r requiremnents.txt``` it will install all the backend requirements.
 
 # Step 2 : Navigate to frontend folder through terminal 
 
-run <npm install> it will install all dependencies.
+run ```npm install``` it will install all dependencies.
 
 # Step 3 : Navigate to backend folder
 
-egrivience folder and run <python manage.py migrate> it will migrate tables and create local database.
+egrivience folder and run ```python manage.py migrate``` it will migrate tables and create local database.
 
 # Step 4: Run
   
-<python manage.py runserver> to start backend server.
+```python manage.py runserver``` to start backend server.
 
 # Step 5: Navigate to frontend folder 
 
@@ -37,5 +37,5 @@ run ```npm start```
 
 # Step 6: Go to 
 
-<http://127.0.0.1:3000>
+```http://127.0.0.1:3000```
 
