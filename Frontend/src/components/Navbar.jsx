@@ -10,7 +10,7 @@ import { IoMdNotificationsOutline } from "react-icons/io";
 
 
 import { RxAvatar } from "react-icons/rx";
-import { MdOutlineLanguage, MdKeyboardArrowDown } from "react-icons/md";
+import { MdOutlineLanguage, MdKeyboardArrowDown,MdEmergency, MdUpdate, MdAccountBox } from "react-icons/md";
 
 import Modal from "react-responsive-modal";
 import "react-responsive-modal/styles.css";
@@ -22,13 +22,18 @@ import AuthContext from "../context/AuthContext";
 import QuestionForm from "./QuestionForm";
 import UserDropDown from "./UserDropDown";
 import SearchForm from "./SearchForm";
+import About from "./About";
 
 const Navbar = () => {
   let {user,logoutUser} = useContext(AuthContext)
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [inputUrl, setInputUrl] = useState("");
+  const [showAbout, setShowAbout] = useState(false);
 
   const Close = <IoMdClose className="text-2xl font-bold" />;
+  const showTable= ()=> {
+    setShowAbout(true);
+  }
 
   return (
     <div className="h-16 qheader flex justify-center items-center p-1 bg-white w-full sticky z-auto top-0 shadow-sm shadow-slate-400">
@@ -56,8 +61,12 @@ const Navbar = () => {
         <div className="qheader_icon">
           <IoMdNotificationsOutline className="hover:bg-slate-100 rounded-2xl" />
         </div>
+        <div className="qheader_icon">
+       <MdAccountBox onClick={showTable} className="hover:bg-slate-100 rounded-2xl" />
+        </div>
+        
       </div>
-      
+     
       <SearchForm/>
 
       <div className="remainimg flex items-center">
@@ -110,7 +119,22 @@ const Navbar = () => {
          
           </div>
         </Modal>
+      <Modal
+          open={showAbout}
+          closeIcon={Close}
+          onClose={() => setShowAbout(false)}
+          closeOnEsc
+          center
+          closeOnOverlayClick={false}
+        >
+          <div className="modal_field flex flex-col mt-8 flex-1">
+            <About/>
+         
+          </div>
+        </Modal>
+        
       </div>
+      
     </div>
   );
 };
