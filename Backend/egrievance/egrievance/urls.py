@@ -27,7 +27,7 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     # path('admin/', include('admin_honeypot.urls', namespace='admin_honeypot')),
-    path('admin', admin.site.urls),
+    path('admin/', admin.site.urls),
     path('auth/',include('accounts.urls')),
     path('posts/',include('posts.urls')),
     path('', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),

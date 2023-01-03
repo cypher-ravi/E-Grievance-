@@ -7,7 +7,7 @@ import {
 import { SlUserFollowing } from "react-icons/sl";
 import { IoMdNotificationsOutline } from "react-icons/io";
 
-import { CgSearch } from "react-icons/cg";
+
 
 import { RxAvatar } from "react-icons/rx";
 import { MdOutlineLanguage, MdKeyboardArrowDown } from "react-icons/md";
@@ -21,6 +21,7 @@ import { Link } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import QuestionForm from "./QuestionForm";
 import UserDropDown from "./UserDropDown";
+import SearchForm from "./SearchForm";
 
 const Navbar = () => {
   let {user,logoutUser} = useContext(AuthContext)
@@ -36,7 +37,7 @@ const Navbar = () => {
           EGrievance
         </h1>
       </div>
-      <div className="q_header_icons flex mr-5">
+      <div className="q_header_icons flex">
         <Link to="/">
           <div className="qheader_icon">
             <AiOutlineHome className="hover:bg-slate-100 rounded-2xl" />
@@ -56,19 +57,13 @@ const Navbar = () => {
           <IoMdNotificationsOutline className="hover:bg-slate-100 rounded-2xl" />
         </div>
       </div>
-      <div className="search_bar">
-        <input
-          type="text"
-          placeholder="enter search here"
-          className="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-        />
-      </div>
-      <button className=" hover:bg-red-700 bg-blue-900 p-2 rounded-3xl ml-1">
-        <CgSearch className="text-white text-xl content-center" />
-      </button>
+      
+      <SearchForm/>
 
-      <div className="remainimg flex items-center ml-6 ">
-      {user ? (<UserDropDown/>
+      <div className="remainimg flex items-center">
+      {user ? (
+      // <UserDropDown/>
+      <button onClick={logoutUser}  className="block py-2 px-5 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</button>
       
       ):(<Link to="/login">
               <div className="avatar qheader_icon">
@@ -81,7 +76,7 @@ const Navbar = () => {
         <MdOutlineLanguage className="text-3xl text-slate-400 hover:text-red-900 hover:bg-slate-100 rounded-2xl" />
         <button
           onClick={() => setIsModalOpen(true)}
-          className="ml-6 bg-blue-900 cursor-pointer h-12 rounded-lg border-2 rounder-md w-40 text-white hover:bg-red-700"
+          className="ml-6 bg-blue-900 cursor-pointer h-12 rounded-full border-2 rounder-md w-40 text-white hover:bg-red-700"
         >
           Add Complaint
         </button>

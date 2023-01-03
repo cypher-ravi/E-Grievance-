@@ -41,6 +41,10 @@
    width:90vh;
    height: 90vh;
 }
+.react-responsive-comment-modal-modal{
+  width:90vh;
+  height: 40vh;
+}
 .quill{
   height:50vh;
 }

@@ -8,6 +8,7 @@ import Login from './pages/Login';
 import { AuthProvider } from './context/AuthContext';
 import { BrowserRouter as Router ,Route,Routes } from 'react-router-dom';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import SearchFeed from './components/SearchFeed';
 
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
                 <Route exact path="/" element={<HomePage/>} />
                 <Route exact path="/solutions" element={<Solution/>} />
                 <Route exact path="/space-solutions" element={<Solution/>} />
+                <Route exact path="/search-feed" element={<SearchFeed/>} />
               </Route>
               <Route exact path="/login" element={<Login/>} />
           </Routes>
