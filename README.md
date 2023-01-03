@@ -1,6 +1,6 @@
 # E-Grievance-Project (Complaint raising and Asking Answers Website)
 TECH STACK USED : Python, Django, Django rest framework, React, CHAT GPT API
-E-Grievance Project to raise complaint and socialize along with it.
+
 
 
 features include :
