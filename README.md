@@ -28,11 +28,12 @@ run <npm install> it will install all dependencies.
 egrivience folder and run <python manage.py migrate> it will migrate tables and create local database.
 
 # Step 4: Run
+  
 <python manage.py runserver> to start backend server.
 
 # Step 5: Navigate to frontend folder 
 
-run <npm start>
+run ```npm start```
 
 # Step 6: Go to 
 
