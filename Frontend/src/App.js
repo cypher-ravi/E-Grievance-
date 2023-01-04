@@ -22,7 +22,7 @@ function App() {
       <>
 
       <Router>
-      <GoogleOAuthProvider clientId="248445241744-jm3h0e65l88uoige865o8ft94q44tiqp.apps.googleusercontent.com">
+      {/* <GoogleOAuthProvider clientId="248445241744-jm3h0e65l88uoige865o8ft94q44tiqp.apps.googleusercontent.com"> */}
         <AuthProvider>
 
             <div className='qura bg-gray-200'>
@@ -39,7 +39,7 @@ function App() {
               <Route exact path="/about" element={<About/>} />
           </Routes>
         </AuthProvider>
-        </GoogleOAuthProvider>
+        {/* </GoogleOAuthProvider> */}
       </Router>
 
       </>

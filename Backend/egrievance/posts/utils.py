@@ -6,7 +6,7 @@ import os
 import openai
 
 openai.organization = "org-wr5H8Bi7AkG3hiLjVGdzywNE"
-openai.api_key = "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"
+openai.api_key = "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"
 
 def get_recommended_answers(question,propmt):
 

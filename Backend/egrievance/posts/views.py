@@ -43,8 +43,6 @@ class CreatePostView(generics.CreateAPIView):
         Answer.objects.create(question=post,content=answer,author=profile)
         return Response({"message":"Question Added Successfully"},status=status.HTTP_201_CREATED)
        
-        # else:
-        #     return Response({"register":False})
 
 class CreateAnswerView(generics.CreateAPIView):
     """
